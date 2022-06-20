@@ -95,6 +95,6 @@ class SupConLoss(nn.Module):
 
         # loss
         loss = - (self.temperature / self.base_temperature) * mean_log_prob_pos
-        loss = loss.view(anchor_count, batch_size).mean()
+        loss = tf.reduce_sum(loss.view(anchor_count, batch_size)).mean()
 
         return loss
