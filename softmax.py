@@ -1,4 +1,3 @@
-import numpy as np
 import tensorflow as tf
 
 class softmax:
@@ -6,8 +5,6 @@ class softmax:
         print("Create Softmax...")
     
     def Softmax(self,y_true,y_pred):
-        L = tf.reduce_sum(y_true-np.log(np.exp(y_pred)/sum(np.exp(y_pred))))
-        return 1/(y_true.size)*tf.cast(L,dtype=tf.float32)
+        L = tf.reduce_mean(y_true-tf.math.log(tf.math.exp(y_pred)/sum(tf.math.exp(y_pred))))
+        return tf.cast(L,dtype=tf.float32)
     
-    # def L_Softmax(self,y_true,y_pred):
-    #     L = 
